@@ -1,8 +1,22 @@
-[package]
+[workspace]
+resolver = "2"
+members = [
+    "crates/orm-core",
+    "crates/example-app"
+]
+
+[workspace.package]
 name = "rust-orm"
 version = "0.1.0"
 edition = "2024"
 authors = ["Matt Tsogt"]
 description = "A minimalist experimental ORM built in Rust for educational purposes"
+repository = "https://github.com/matt-tsogt/rust-orm"
+keywords = ["ORM","Rust","database"]
 
-[dependencies]
+[workspace.dependencies]
+sqlx = { version = "0.8.6", default-features = false, features = ["runtime-tokio", "postgres"] }
+tokio = { version = "1.49.0", default-features = false, features = ["rt-multi-thread", "macros"] }
+thiserror = "2.0.18"
+dotenvy = "0.15.7"
+clap = { version = "4.5.57", features = ["derive"] }
